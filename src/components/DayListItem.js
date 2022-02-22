@@ -15,7 +15,6 @@ export default function DayListItem(props) {
   );
 }
 const FormatSpots = function (props){
-  console.log(props.spots);
   return(<h3 className="text--light">{props.spots === 0 && "no spots remaining"}
   {props.spots === 1 && props.spots + " spot remaining"}{props.spots > 1 && props.spots + " spots remaining"}</h3>);
 }
