@@ -10,7 +10,7 @@ export default function InterviewerListItem(props) {
       "interviewers__item--selected": props.selected === true
      });
 
-    console.log(props.selected);
+    //console.log(props.selected);
 
     return (
       <li className={listClass} onClick={() => props.setInterviewer(props.name)}>

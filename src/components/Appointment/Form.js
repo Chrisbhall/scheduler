@@ -10,13 +10,15 @@ const reset = function(){
   setInterviewer("");
 }
 const cancel = function(){
+  props.back();
   reset();
+  
 }
 
     return (
 <main className="appointment__card appointment__card--create">
   <section className="appointment__card-left">
-    <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+    <form autoComplete="off" onSubmit={event => event.preventDefault()} >
       <input
         className="appointment__create-input text--semi-bold"
         name="name"
@@ -26,9 +28,7 @@ const cancel = function(){
         onChange={(event) => setStudent(event.target.value)}
       />
     </form>
-    <InterviewerList 
-     interviewers={props.interviewers} interviewer={interviewer} setInterviewer={setInterviewer}
-    />
+
   </section>
   <section className="appointment__card-right">
     <section className="appointment__actions">
@@ -40,3 +40,9 @@ const cancel = function(){
 
   );
 }
+
+/*
+    <InterviewerList 
+     interviewers={props.interviewers} interviewer={interviewer} setInterviewer={setInterviewer}
+    />
+    */

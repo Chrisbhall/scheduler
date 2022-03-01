@@ -5,7 +5,9 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import InterviewerList from "./InterviewerList";
 import Appointment from "./Appointment/index";
-const appointments = [
+import getAppointmentsForDay from "./helpers/selectors";
+import getInterviewersForDay from "./helpers/selectors";
+/*const appointments = [
   {
     id: 1,
     time: "12pm",
@@ -42,7 +44,7 @@ const appointments = [
     id: 5,
     time: "4pm",
   }
-];
+];*/
 
 
 const interviewers = [
@@ -54,16 +56,48 @@ const interviewers = [
 ];
 
 export default function Application(props) {
-  const [day, setDay] = useState("Monday");
-  const [days, setDays] = useState([]);
-  const [interviewer, setInterviewer] = useState("");
+
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: [],
+    interviewer: []
+  });
+  const dailyAppointments = [];
+  const setDay = day => setState({ ...state, day });
+  const setDays = days => setState({ ...state, days });
+  //const [interviewer, setInterviewer] = useState("");
+
   useEffect(() => {
-    const testURL = `http://localhost:8001/api/days`;
+    Promise.all([
+      axios.get('http://localhost:8001/api/days'),
+      axios.get('http://localhost:8001/api/appointments'),
+      axios.get('http://localhost:8001/api/interviewers')
+    ]).then((all) => {
+      //console.log(all[0].data); // first
+      //console.log(all[1].data); // second
+      //console.log(all[2]); // third
+      //getAppointmentsForDay(all[1].data, state.day);
+      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewer: all[2].data }));
+      const [first, second, third] = all;
+    
+      // /console.log(first, second, third);
+    });
+
+
+
+    /*const testURL = `http://localhost:8001/api/days`;
     axios.get(testURL).then(response => {
       console.log(response.data);
       setDays(response.data);
-    });
+    });*/
 }, [])
+console.log(state);
+//getAppointmentsForDay(state.days, state.day);
+//getInterviewersForDay(state.days, state.day);   interviewers for the day in array
+const map1 = getAppointmentsForDay(state, state.day).map(day => <Appointment key={state.appointments.id} {... day}/>);
+console.log(getAppointmentsForDay(state, state.day));
+//{...state.appointments[day]}
 
   return (
     <main className="layout">
@@ -75,7 +109,7 @@ export default function Application(props) {
 />
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu">
-<DayList days={days} day={day} setDay={setDay} />
+<DayList days={state.days} day={state.day} setDay={setDay} />
 </nav>
 <img
   className="sidebar__lhl sidebar--centered"
@@ -84,12 +118,8 @@ export default function Application(props) {
 />
       </section>
       <section className="schedule">
-
-      <Appointment key={appointments.id} {...appointments[0]} />
-      <Appointment key={appointments.id} {...appointments[1]} />
-      <Appointment key={appointments.id} {...appointments[2]} />
-      <Appointment key={appointments.id} {...appointments[3]} />
-      <Appointment key={appointments.id} {...appointments[4]} />
+        {map1}
+      
       <Appointment key="last" time="5pm" />
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
@@ -98,6 +128,14 @@ export default function Application(props) {
 }
 
 /*
+<Appointment key={state.appointments.id} {...state.appointments[1]} />
+      <Appointment key={state.appointments.id} {...state.appointments[2]} />
+      <Appointment key={state.appointments.id} {...state.appointments[3]} />
+      <Appointment key={state.appointments.id} {...state.appointments[4]} />
+      <Appointment key={state.appointments.id} {...state.appointments[5]} />
+
+
+
       <Appointment key={appointments[0].id} id={appointments[0].id} time={appointments[0].time} interview={appointments[0].interview} />
       <Appointment key={appointments[1].id} id={appointments[1].id} time={appointments[1].time} interview={appointments[1].interview} />
       <Appointment key={appointments[2].id} id={appointments[2].id} time={appointments[2].time} interview={appointments[2].interview} />
