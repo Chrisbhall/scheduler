@@ -27,13 +27,16 @@ const cancel = function(){
         placeholder="Enter Student Name"
         onChange={(event) => setStudent(event.target.value)}
       />
+      <InterviewerList 
+     interviewers={props.interviewers} interviewer={interviewer} setInterviewer={setInterviewer}
+    />
     </form>
 
   </section>
   <section className="appointment__card-right">
     <section className="appointment__actions">
       <Button danger onClick={cancel}>Cancel</Button>
-      <Button confirm onClick={props.onSave}>Save</Button>
+      <Button confirm onClick={() => props.onSave(student, interviewer)}>Save</Button>
     </section>
   </section>
 </main>
@@ -42,7 +45,5 @@ const cancel = function(){
 }
 
 /*
-    <InterviewerList 
-     interviewers={props.interviewers} interviewer={interviewer} setInterviewer={setInterviewer}
-    />
+    
     */

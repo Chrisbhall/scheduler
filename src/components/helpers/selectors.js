@@ -28,3 +28,11 @@ export function getInterviewersForDay(state, day) {
   //console.log(result);
   return (result);
 }
+
+export function getInterview(state, interview) {
+  console.log(state);
+  const result = {student: interview.student, interviewer: state.interviewers[interview.interviewer]};
+ //const interviewer = state.interviewers[interview.interviewer];
+ console.log(result);
+  return (result);
+}
