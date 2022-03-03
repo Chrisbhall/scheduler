@@ -1,6 +1,6 @@
-import  getAppointmentsForDay from "./selectors";
-import  getInterviewersForDay from "./selectors";
-import  getInterview from "./selectors";
+import  {getAppointmentsForDay ,getInterviewersForDay ,getInterview} from "./selectors";
+//import  getInterviewersForDay from "./selectors";
+//import  getInterview from "./selectors";
 
 const state = {
   interviewers: {

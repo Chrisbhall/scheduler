@@ -5,8 +5,7 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import InterviewerList from "./InterviewerList";
 import Appointment from "./Appointment/index";
-import getAppointmentsForDay from "./helpers/selectors";
-import getInterviewersForDay from "./helpers/selectors";
+import {getAppointmentsForDay, getInterviewersForDay} from "./helpers/selectors";
 /*const appointments = [
   {
     id: 1,
