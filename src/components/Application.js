@@ -80,17 +80,17 @@ export default function Application(props) {
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewer: all[2].data }));
       const [first, second, third] = all;
       // /console.log(first, second, third);
+
     });
-    
-    
-
-
     /*const testURL = `http://localhost:8001/api/days`;
     axios.get(testURL).then(response => {
       console.log(response.data);
       setDays(response.data);
     });*/
 }, [])
+
+
+
 function bookInterview(id, interview) {
   const appointment = {
     ...state.appointments[id],
@@ -103,11 +103,18 @@ function bookInterview(id, interview) {
   console.log(appointment);
   setState({...state, appointments});
   console.log(id);
-  axios.put('/api/appointments/'+id, appointment);
+  return axios.put('/api/appointments/'+id, appointment);
+  /*const booked = new Promise((resolve, reject) =>{
+    axios.put('/api/appointments/'+id, appointment).then(()=> {}).catch((error) =>{});
+    reject("oops");
+  }).catch((e)=>{return e;});
+  return booked;*/
 }
+
+
 function cancelInterview (id) {
   console.log(id);
-  axios.delete('/api/appointments/'+id);
+  return axios.delete('/api/appointments/'+id);
 }
 
 //getAppointmentsForDay(state.days, state.day);
