@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 export default function useVisualMode(initial) {
+  /*
+manages transitions of the display from errors/shows/empty....
+  */
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
@@ -13,7 +16,6 @@ export default function useVisualMode(initial) {
       history.push(Value);
       setMode(Value);
     }
-    console.log(history);
   };
   function back (){
     if (history.length <= 1) {
@@ -21,7 +23,6 @@ export default function useVisualMode(initial) {
     history.pop();
     setMode(history[history.length - 1]);
     }
-    console.log(mode);
   }
 
   return { mode, transition, back };

@@ -12,7 +12,14 @@ import Error from "./Error";
 import useVisualMode from "../../hooks/useVisualMode";
 
 export default function Appointment(props) {
-  
+  /*
+manages each time slot with entering 
+time in the header
+empty if it's open
+shows if it's booked
+displays errors if appointment fails to cancel or save
+...
+  */
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -29,7 +36,6 @@ export default function Appointment(props) {
   function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
   }
-  console.log(props);
   function onSave(name, interviewer) {
     const interview = {
       student: name,
@@ -72,13 +78,3 @@ export default function Appointment(props) {
         </article>
   );
 }
-/*
-        {props.interview === undefined && <Empty onAdd={action("onAdd")} />}
-        {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-        {mode === SHOW && (
-          <Show
-           student={props.interview.student}
-           interviewer={props.interview.interviewer}
-          />
-        )}
-        */

@@ -6,12 +6,12 @@ import "./InterviewerListItem.scss";
 
 
 export default function InterviewerListItem(props) {
+  /*
+manages each interviewer in the list
+  */
     const listClass = classNames("interviewers__item", {
       "interviewers__item--selected": props.selected === true
      });
-
-    //console.log(props.selected);
-
     return (
       <li className={listClass} onClick={() => props.setInterviewer(props.id)}>
       <img
@@ -24,18 +24,6 @@ export default function InterviewerListItem(props) {
     
     );
    }
-  /* const setInterviewer = function (props){
-    console.log(props.id);
-    return(<p>{props.name !== "" && props.name}</p>);
-  }*/
- /*
-      <button
-        className={buttonClass}
-        onClick={props.onClick}
-        disabled={props.disabled}
-      >
-        {props.children}
-*/
 
 
 

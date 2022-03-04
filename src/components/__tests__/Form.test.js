@@ -6,8 +6,6 @@ import Form from "../Appointment/Form";
 
 afterEach(cleanup);
 
-/**/
-
 describe("Form", () => {
   const interviewers = [
     {

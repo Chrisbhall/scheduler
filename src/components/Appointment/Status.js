@@ -1,7 +1,9 @@
 import React from "react";
 
 export default function Status(props) {
-
+/*
+manages the messages when appointment is saving or deleting
+*/
     return (
 <main className="appointment__card appointment__card--status">
   <img

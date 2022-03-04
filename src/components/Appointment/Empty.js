@@ -1,7 +1,9 @@
 import React from "react";
 
 export default function Empty(props) {
-
+/*
+manages empty container to add appointment
+*/
     return (
       <main className="appointment__add">
   <img
