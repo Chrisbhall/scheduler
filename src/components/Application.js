@@ -33,8 +33,6 @@ manages application get information/ passing it down as props to daylist & appoi
     });
 }, [])
 
-
-
 function bookInterview(id, interview) {
   const appointment = {
     ...state.appointments[id],
@@ -47,14 +45,14 @@ function bookInterview(id, interview) {
   setState({...state, appointments});
   return axios.put('/api/appointments/'+id, appointment);
 }
-
+let map1 = getAppointmentsForDay(state, state.day).map(day => {
+  return <Appointment key={day.id}{... day} interviewers={state.interviewer} bookInterview={bookInterview} cancelInterview={cancelInterview}/>
+  });
 
 function cancelInterview (id) {
   return axios.delete('/api/appointments/'+id);
 }
-const map1 = getAppointmentsForDay(state, state.day).map(day => {
-return <Appointment key={day.id}{... day} interviewers={state.interviewer} bookInterview={bookInterview} cancelInterview={cancelInterview}/>
-});
+
 
   return (
     <main className="layout">

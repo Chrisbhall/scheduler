@@ -21,3 +21,8 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Screenshots
+!["Screenshot of Main Page with tweet form "](https://github.com/Chrisbhall/tweeter/blob/master/images/scheduler1.PNG)
+
+!["Screenshot of Main Page without the tweet form"](https://github.com/Chrisbhall/tweeter/blob/master/images/scheduler2.PNG)
