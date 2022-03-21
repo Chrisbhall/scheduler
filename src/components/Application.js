@@ -51,6 +51,7 @@ let map1 = getAppointmentsForDay(state, state.day).map(day => {
   });
 
 function cancelInterview (id) {
+  window.location.reload(false);
   return axios.delete('/api/appointments/'+id);
 }
 
