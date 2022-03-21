@@ -21,6 +21,7 @@ manages application get information/ passing it down as props to daylist & appoi
   const setDay = day => setState({ ...state, day });
   const setDays = days => setState({ ...state, days });
 
+
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -32,7 +33,6 @@ manages application get information/ passing it down as props to daylist & appoi
 
     });
 }, [])
-
 function bookInterview(id, interview) {
   const appointment = {
     ...state.appointments[id],
@@ -43,6 +43,7 @@ function bookInterview(id, interview) {
     [id]: appointment
   };
   setState({...state, appointments});
+  window.location.reload(false);
   return axios.put('/api/appointments/'+id, appointment);
 }
 let map1 = getAppointmentsForDay(state, state.day).map(day => {
