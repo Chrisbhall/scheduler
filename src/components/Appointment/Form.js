@@ -15,11 +15,7 @@ const reset = function(){
   setError("");
   props.onCancel();
 }
-const Cancel = function(){
-  props.back();
-  reset();
-  
-}
+
 function validate() {
   if (student === "") {
     setError("Student name cannot be blank");

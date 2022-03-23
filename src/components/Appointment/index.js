@@ -33,9 +33,6 @@ displays errors if appointment fails to cancel or save
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-  function delay(time) {
-    return new Promise(resolve => setTimeout(resolve, time));
-  }
   function onSave(name, interviewer) {
     const interview = {
       student: name,

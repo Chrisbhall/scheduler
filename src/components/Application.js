@@ -3,9 +3,8 @@ import axios from "axios";
 
 import "components/Application.scss";
 import DayList from "./DayList";
-import InterviewerList from "./InterviewerList";
 import Appointment from "./Appointment/index";
-import {getAppointmentsForDay, getInterviewersForDay} from "./helpers/selectors";
+import {getAppointmentsForDay} from "./helpers/selectors";
 
 export default function Application(props) {
 /*
@@ -17,9 +16,7 @@ manages application get information/ passing it down as props to daylist & appoi
     appointments: [],
     interviewer: []
   });
-  const dailyAppointments = [];
   const setDay = day => setState({ ...state, day });
-  const setDays = days => setState({ ...state, days });
 
 
   useEffect(() => {
@@ -29,7 +26,6 @@ manages application get information/ passing it down as props to daylist & appoi
       axios.get('/api/interviewers')
     ]).then((all) => {
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewer: all[2].data }));
-      const [first, second, third] = all;
 
     });
 }, [])
