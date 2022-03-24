@@ -13,8 +13,6 @@ export default function useApplicationData(state, setState) {
     });
 })
 
-
-
 return {useEffect};
 };
 

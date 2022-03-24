@@ -35,7 +35,6 @@ const [state, setState] = useState({
     setState({...state, appointments});
     return axios.put('/api/appointments/'+id, appointment);
   }
-//console.log(useApplicationData(state, setState));
 let map1 = getAppointmentsForDay(state, state.day).map(day => {
   return <Appointment key={day.id}{... day} interviewers={state.interviewer} bookInterview={bookInterview} cancelInterview={cancelInterview}/>
   });
