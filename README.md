@@ -1,8 +1,12 @@
 # Interview Scheduler
 
+# Description
+Scheduler is a web app to help students book interviews through a monday - friday 
+
 ## Setup
 
 Install dependencies with `npm install`.
+Download / run Scheduler-api from : https://github.com/Chrisbhall/scheduler-api
 
 ## Running Webpack Development Server
 
@@ -21,6 +25,12 @@ npm test
 ```sh
 npm run storybook
 ```
+## Dependencies
+-Node.js
+-React
+-Storybook
+-Jest
+-Axios
 
 ## Screenshots
 
