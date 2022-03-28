@@ -15,7 +15,6 @@ const reset = function(){
   setError("");
   props.onCancel();
 }
-
 function validate() {
   if (student === "") {
     setError("Student name cannot be blank");
@@ -43,7 +42,7 @@ function validate() {
       />
       <section className="appointment__validation">{error}</section>
       <InterviewerList 
-     interviewers={props.interviewers} interviewer={interviewer} setInterviewer={setInterviewer}
+     id={interviewer} interviewers={props.interviewers} interviewer={interviewer} setInterviewer={setInterviewer}
     />
     </form>
 

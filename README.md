@@ -1,7 +1,7 @@
 # Interview Scheduler
 
 # Description
-Scheduler is a web app to help students book interviews through a monday - friday 
+Scheduler is a web app to help students book interviews through a monday - friday 12pm to 5pm schedule
 
 ## Setup
 

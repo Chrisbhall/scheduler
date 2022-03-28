@@ -38,15 +38,15 @@ displays errors if appointment fails to cancel or save
       student: name,
       interviewer
     };
-    transition(SAVE, true);
-      props.bookInterview(props.id,interview).then(() => transition(SHOW, true)).catch(() => transition(ERROR_SAVE, true));
+    transition(SAVE);
+      props.bookInterview(props.id,interview, props.state, props.setState).then(() => transition(SHOW, true)).catch(() => transition(ERROR_SAVE));
   }
   function onDelete(id){
     setDeleteId(id);
     transition(CONFIRM);
   }
   function onEdit(){
-    transition(Edit);
+    transition(Edit, true);
   }
   function onCancel(){
     back();
@@ -69,7 +69,7 @@ displays errors if appointment fails to cancel or save
         {mode === CONFIRM && <Confirm message="Are you sure you would like to delete?" onCancel={onCancel} onConfirm={onConfirm} />}
         {mode === ERROR_SAVE && <Error message="Error could not save appointment" onClose={onCancel}/>}
         {mode === ERROR_DELETE && <Error message="Error could not cancel appointment" onClose={onCancel}/>}
-        {mode === Edit && props.interview.student && props.interview.interviewer && <Form student={props.interview.student} interviewer={props.interview.interviewer} interviewers={props.interviewers} onSave={onSave} back={back}/>}
+        {mode === Edit && props.interview.student && props.interview.interviewer && <Form student={props.interview.student} interviewer={props.interview.interviewer} interviewers={props.interviewers} onSave={onSave} onCancel={onCancel} back={back}/>}
         {mode === CREATE && <Form interviewers={props.interviewers} onCancel={onCancel} onSave={onSave} back={back}/>}
 
         </article>
